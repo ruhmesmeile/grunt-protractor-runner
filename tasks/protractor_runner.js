@@ -12,8 +12,8 @@ var util = require('util');
 var path = require('path');
 
 module.exports = function(grunt) {
-
-  grunt.registerMultiTask('protractor', 'A grunt task to run protractor.', function() {
+  // switched from registerMultiTask to registerTask by ruhmesmeile julrich 27.02.2014, see: // removed by ruhmesmeile julrich 27.02.2014, see: https://github.com/teerapap/grunt-protractor-runner/issues/1
+  grunt.registerTask('protractor', 'A grunt task to run protractor.', function() {
 
     // '.../node_modules/protractor/lib/protractor.js'
     var protractorMainPath = require.resolve('protractor');
@@ -31,10 +31,12 @@ module.exports = function(grunt) {
       args: {}
     });
 
+
     // configFile is a special property which need not to be in options{} object.
-    if (!grunt.util._.isUndefined(this.data.configFile)) {
+    // removed by ruhmesmeile julrich 27.02.2014, see: https://github.com/teerapap/grunt-protractor-runner/issues/1
+    /*if (!grunt.util._.isUndefined(this.data.configFile)) {
       opts.configFile = this.data.configFile;
-    }
+    }*/
 
     grunt.verbose.writeln("Options: " + util.inspect(opts));
 
